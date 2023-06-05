@@ -12,7 +12,7 @@ body {
   letter-spacing: -.003em;
   font-size: 20px;
   padding: 70px;
-  max-width:800px;
+  max-width:500px;
   margin-left: auto;
   margin-right:auto
 }
@@ -67,6 +67,15 @@ h4 {
   margin-top: 25px;
 }
 
+button {
+background-color: #FFFFFF; /* Green */
+  border: none;
+  color: white;
+  border: 0;
+  padding: 0;
+
+}
+
 </style>
 </head>
   <body>
@@ -82,7 +91,12 @@ h4 {
         This will soon be the content of my website!
       </div>
       
-      <h2>Notion</h2>
+      
+      <button type="button" class="collapsible"><h2>Notion</h2></button>
+<div class="content">
+
+
+      
       <h3>Sexta</h3>
       <h4>Biologie</h4>
       	<a href="/uploads/media/houby-2023-06-05.pdf">Houby</a>
@@ -94,8 +108,24 @@ h4 {
         <a href="/uploads/media/pevne-latky-2023-06-05.pdf">Pevné látky</a><br>
         <a href="/uploads/media/kapaliny-2023-06-05.pdf">Kapaliny</a><br>
         <a href="/uploads/media/elektrina-2023-06-05.pdf">Elektřina</a><br>
+        </div>
     </main>
   </body>
 </html>
 
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
 
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
