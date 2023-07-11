@@ -105,7 +105,41 @@ button {
   background-color: #3B4252;
 }
 
-@media (max-width: 999px) {
+.obsidian-button::after {
+  content: "vCard file";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+
+@media  (min-width: 1000px) {
+
+.bottomright {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  font-size: 18px;
+}
+
+.bottomleft {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  font-size: 18px;
+}
+}
+
+@media  (min-width: 380px) and (max-width: 999px)  {
   body {
     font-size: 1.3em;
     padding: 2.5em;
@@ -133,34 +167,26 @@ button {
   }
 
   .obsidian-button {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     display: block;
     margin: 0 auto;
     margin-top: 20px;
-  }
-
-  .obsidian-button::after {
-  content: "vCard file";
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #000;
-  color: #fff;
-  font-size: 12px;
-  padding: 4px 8px;
-  border-radius: 4px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
   }
   
   .obsidian-button:hover::after {
     opacity: 1;
   }
   
-  .bottomright,
-  .bottomleft {
-    position: static;
-    font-size: 18px;
+  .bottomright{
+  display: none !important;
   }
+  .bottomleft {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  font-size: 18px;
+}
 }
