@@ -138,6 +138,26 @@ button {
     margin-top: 20px;
   }
 
+  .obsidian-button::after {
+  content: "vCard file";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #000;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  }
+  
+  .obsidian-button:hover::after {
+    opacity: 1;
+  }
+  
   .bottomright,
   .bottomleft {
     position: static;
