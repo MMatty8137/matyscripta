@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Inter&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
 @media (min-width: 320px) and (max-width: 999px) {
 body {
   font-family: 'Inter', sans-serif;
@@ -85,6 +86,26 @@ background-color: #FFFFFF; /* Green */
   bottom: 8px;
   left: 16px;
   font-size: 18px;
+}
+
+.obsidian-button {
+  display: inline-block;
+  border: none;
+  padding: 10px 20px;
+  background-color: #2E3440;
+  color: #D8DEE9;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 20px; /* Rounded corners */
+
+}
+
+.obsidian-button:hover {
+  background-color: #3B4252;
 }
 }
 
@@ -174,5 +195,25 @@ background-color: #FFFFFF; /* Green */
   bottom: 8px;
   left: 16px;
   font-size: 18px;
+}
+
+.obsidian-button {
+  display: inline-block;
+  border: none;
+  padding: 10px 20px;
+  background-color: #2E3440;
+  color: #D8DEE9;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 20px; /* Rounded corners */
+
+}
+
+.obsidian-button:hover {
+  background-color: #3B4252;
 }
 }
