@@ -1,116 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Inter&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
 
-@media (min-width: 320px) and (max-width: 999px) {
-body {
-  font-family: 'Inter', sans-serif;
-  color: rgba(0, 0, 0, 0.8);
-  font-weight: 400;
-  line-height: 1.58;
-  letter-spacing: -.003em;
-  font-size: 1.3em;
-  padding: 2.5em;
-  margin-left: auto;
-  margin-right:auto
-}
-
-h1 {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 2em;
-  line-height: 1.15;
-  letter-spacing: -.02em;
-  color: rgba(0, 0, 0, 0.8);
-  -webkit-font-smoothing: antialiased;
-}
-
-h2 {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 1.8em;
-  line-height: 1.15;
-  letter-spacing: -.02em;
-  color: rgba(0, 0, 0, 0.8);
-  -webkit-font-smoothing: antialiased;
-  margin-bottom: 0;
-  margin-top: 30px;
-}
-
-h3 {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 1.6em;
-  line-height: 1.15;
-  letter-spacing: -.02em;
-  color: rgba(0, 0, 0, 0.8);
-  -webkit-font-smoothing: antialiased;
-  margin-bottom: 5px;
-  margin-top: 25px;
-}
-
-h4 {
-  font-family: 'Inter', sans-serif;
-  font-weight: 1.4em;
-  font-style: normal;
-  font-size: 22px;
-  line-height: 1.15;
-  letter-spacing: -.02em;
-  color: rgba(0, 0, 0, 0.8);
-  -webkit-font-smoothing: antialiased;
-  margin-bottom: 5px;
-  margin-top: 25px;
-}
-
-button {
-background-color: #FFFFFF; /* Green */
-  border: none;
-  color: white;
-  border: 0;
-  padding: 0;
-
-}
-
-.bottomright {
-  position: absolute;
-  bottom: 8px;
-  right: 16px;
-  font-size: 18px;
-  display: none !important;
-}
-
-.bottomleft {
-  position: absolute;
-  bottom: 8px;
-  left: 16px;
-  font-size: 18px;
-}
-
-.obsidian-button {
-  display: inline-block;
-  border: none;
-  padding: 10px 20px;
-  background-color: #2E3440;
-  color: #D8DEE9;
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  border-radius: 20px; /* Rounded corners */
-
-}
-
-.obsidian-button:hover {
-  background-color: #3B4252;
-}
-}
-
-
-@media (min-width: 1000px) {
 body {
   font-family: 'Inter', sans-serif;
   color: rgba(0, 0, 0, 0.8);
@@ -119,9 +9,9 @@ body {
   letter-spacing: -.003em;
   font-size: 20px;
   padding: 70px;
-  max-width:50rem;
+  max-width: 50rem;
   margin-left: auto;
-  margin-right:auto
+  margin-right: auto;
 }
 
 h1 {
@@ -175,12 +65,11 @@ h4 {
 }
 
 button {
-background-color: #FFFFFF; /* Green */
+  background-color: #FFFFFF; /* Green */
   border: none;
   color: white;
   border: 0;
   padding: 0;
-
 }
 
 .bottomright {
@@ -210,10 +99,48 @@ background-color: #FFFFFF; /* Green */
   cursor: pointer;
   transition: background-color 0.3s ease;
   border-radius: 20px; /* Rounded corners */
-
 }
 
 .obsidian-button:hover {
   background-color: #3B4252;
 }
+
+@media (max-width: 999px) {
+  body {
+    font-size: 1.3em;
+    padding: 2.5em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.8em;
+    margin-top: 5px;
+  }
+
+  h3 {
+    font-size: 1.6em;
+    margin-top: 5px;
+  }
+
+  h4 {
+    font-size: 22px;
+    margin-top: 5px;
+  }
+
+  .obsidian-button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+
+  .bottomright,
+  .bottomleft {
+    position: static;
+    font-size: 18px;
+  }
 }
