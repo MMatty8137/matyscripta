@@ -122,7 +122,7 @@ button {
 }
 
 
-@media  (min-width: 20cm) and (min-width: 1000px){
+@media (min-width: 1000px){
 
 .bottomright {
   position: absolute;
@@ -139,7 +139,7 @@ button {
 }
 }
 
-@media  (min-width: 3cm) and (max-width: 20cm) and (min-width: 400px)  {
+@media (min-width: 400px)  {
   body {
     font-size: 3.2vh;
     padding: 2.5em;
