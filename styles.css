@@ -185,9 +185,13 @@ button {
   display: none !important;
   }
   .bottomleft {
-  position: absolute;
-  bottom: 8px;
-  left: 16px;
-  font-size: 18px;
-}
+    position: absolute;
+    bottom: 1.2em;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7em;
+    display: block;
+    margin: 0 auto;
+    margin-top: 2em;
+  }
 }
