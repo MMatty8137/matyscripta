@@ -89,16 +89,16 @@ button {
 .obsidian-button {
   display: inline-block;
   border: none;
-  padding: 10px 20px;
+  padding: 1em 2em;
   background-color: #2E3440;
   color: #D8DEE9;
   font-family: 'Inter', sans-serif;
-  font-size: 16px;
+  font-size: 0.6em;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  border-radius: 20px; /* Rounded corners */
+  border-radius: 1.6em; /* Rounded corners */
 }
 
 .obsidian-button:hover {
@@ -108,17 +108,18 @@ button {
 .obsidian-button::after {
   content: "vCard file";
   position: absolute;
-  bottom: 100%;
+  bottom: 110%;
   left: 50%;
   transform: translateX(-50%);
   background-color: #000;
   color: #fff;
-  font-size: 12px;
-  padding: 4px 8px;
-  border-radius: 4px;
+  font-size: 1em;
+  padding: 0.6em 1.8em;
+  border-radius: 1.2em;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
+  white-space: nowrap;
 }
 
 
