@@ -7,7 +7,7 @@ body {
   font-weight: 400;
   line-height: 1.58;
   letter-spacing: -.003em;
-  font-size: 20px;
+  font-size: 60%; /* Adjust the font size to 60% of the original */
   padding: 70px;
   max-width: 50rem;
   margin-left: auto;
@@ -18,7 +18,7 @@ h1 {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 4vw;
+  font-size: 3.6vw; /* Adjust the font size for h1 */
   line-height: 1.15;
   letter-spacing: -.02em;
   color: rgba(0, 0, 0, 0.8);
@@ -29,7 +29,7 @@ h2 {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 3.3vw;
+  font-size: 3.18vw; /* Adjust the font size for h2 */
   line-height: 1.15;
   letter-spacing: -.02em;
   color: rgba(0, 0, 0, 0.8);
@@ -42,7 +42,7 @@ h3 {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 2.6vw;
+  font-size: 2.34vw; /* Adjust the font size for h3 */
   line-height: 1.15;
   letter-spacing: -.02em;
   color: rgba(0, 0, 0, 0.8);
@@ -55,7 +55,7 @@ h4 {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 2.2vw;
+  font-size: 1.32vw; /* Adjust the font size for h4 */
   line-height: 1.15;
   letter-spacing: -.02em;
   color: rgba(0, 0, 0, 0.8);
