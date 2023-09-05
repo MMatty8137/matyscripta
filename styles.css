@@ -73,18 +73,29 @@ button {
 }
 
 .bottomright {
-  position: absolute;
+  position: fixed;
   bottom: 8px;
   right: 16px;
   font-size: 2vw;
+  z-index: 999; /* Ensure it's above other content */
+  border: 2px ; /* Add a border */
+  padding: 5px; /* Add padding to the box */
+  background-color: white; /* Fill with white color */
+  border-radius: 20px; /* Add rounded corners */
 }
 
 .bottomleft {
-  position: absolute;
+  position: fixed;
   bottom: 8px;
   left: 16px;
   font-size: 18px;
+  z-index: 999; /* Ensure it's above other content */
+  border: 2px; /* Add a border */
+  padding: 5px; /* Add padding to the box */
+  background-color: white; /* Fill with white color */
+  border-radius: 20px; /* Add rounded corners */
 }
+
 
 .obsidian-button {
   display: inline-block;
