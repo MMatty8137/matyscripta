@@ -7,7 +7,7 @@ body {
   font-weight: 400;
   line-height: 1.58;
   letter-spacing: -.003em;
-  font-size: 20px;
+  font-size: 110%; /* Adjust the font size to 60% of the original */
   padding: 70px;
   max-width: 50rem;
   margin-left: auto;
@@ -18,7 +18,7 @@ h1 {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 4vw;
+  font-size: 3.4vw; /* Adjust the font size for h1 */
   line-height: 1.15;
   letter-spacing: -.02em;
   color: rgba(0, 0, 0, 0.8);
@@ -29,7 +29,7 @@ h2 {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 3.3vw;
+  font-size: 3.0vw; /* Adjust the font size for h2 */
   line-height: 1.15;
   letter-spacing: -.02em;
   color: rgba(0, 0, 0, 0.8);
@@ -42,7 +42,7 @@ h3 {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 2.6vw;
+  font-size: 2.34vw; /* Adjust the font size for h3 */
   line-height: 1.15;
   letter-spacing: -.02em;
   color: rgba(0, 0, 0, 0.8);
@@ -55,7 +55,7 @@ h4 {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-style: normal;
-  font-size: 2.2vw;
+  font-size: 1.32vw; /* Adjust the font size for h4 */
   line-height: 1.15;
   letter-spacing: -.02em;
   color: rgba(0, 0, 0, 0.8);
@@ -73,18 +73,29 @@ button {
 }
 
 .bottomright {
-  position: absolute;
+  position: fixed;
   bottom: 8px;
   right: 16px;
-  font-size: 2vw;
+  font-size: 18px;
+  z-index: 999; /* Ensure it's above other content */
+  border: 2px solid rgba(255,255,255,0); /* Add a border */
+  padding: 5px; /* Add padding to the box */
+  background-color: white; /* Fill with white color */
+  border-radius: 20px; /* Add rounded corners */
 }
 
 .bottomleft {
-  position: absolute;
+  position: fixed;
   bottom: 8px;
   left: 16px;
   font-size: 18px;
+  z-index: 999; /* Ensure it's above other content */
+  border: 2px solid rgba(255,255,255,0); /* Add a border */
+  padding: 5px; /* Add padding to the box */
+  background-color: white; /* Fill with white color */
+  border-radius: 20px; /* Add rounded corners */
 }
+
 
 .obsidian-button {
   display: inline-block;
@@ -180,18 +191,20 @@ button {
   .obsidian-button:hover::after {
     opacity: 1;
   }
-  
-  .bottomright{
-  display: none !important;
-  }
-  .bottomleft {
-    position: absolute;
-    bottom: 1.2em;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.7em;
-    display: block;
-    margin: 0 auto;
-    margin-top: 2em;
-  }
+
+  .bottomright {
+  position: fixed;
+  bottom: 8px;
+  right: 16px;
+  font-size: 18px;
+  z-index: 999; /* Ensure it's above other content */
+}
+
+.bottomleft {
+  position: fixed;
+  bottom: 8px;
+  left: 16px;
+  font-size: 18px;
+  z-index: 999; /* Ensure it's above other content */
+}
 }
