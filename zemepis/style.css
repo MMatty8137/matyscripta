@@ -1,0 +1,36 @@
+body {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#map {
+    height: 500px;
+    width: 800px;
+}
+
+button {
+    margin-top: 10px;
+}
+
+#result, #poi-name {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.poi-marker {
+    background-color: red;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    border: 2px solid white;
+}
