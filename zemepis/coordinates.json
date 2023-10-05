@@ -199,6 +199,11 @@
         "longitude": 15.895662392447324,
         "type": "water"
     },
+    "Lipno": {
+        "latitude": 49.63945835,
+        "longitude": 15.895662392447324,
+        "type": "water"
+    },
     "Orlík": {
         "latitude": 49.1111478,
         "longitude": 15.406949892632378,
@@ -323,5 +328,75 @@
         "latitude": 50.0363791,
         "longitude": 13.2814435,
         "type": "river"
+    },
+    "Hněvkovice": {
+        "latitude": 49.68890,
+        "longitude": 15.2074,
+        "type": "dam"
+    },
+    "Kořensko": {
+        "latitude": 49.241021,
+        "longitude": 14.3819967,
+        "type": "dam"
+    },
+    "Kamýk": {
+        "latitude": 50.6365,
+        "longitude": 14.23,
+        "type": "dam"
+    },
+    "Slapy": {
+        "latitude": 49.82,
+        "longitude": 14.42,
+        "type": "dam"
+    },
+    "Štěchovice": {
+        "latitude": 49.8128,
+        "longitude": 14.415,
+        "type": "dam"
+    },
+    "Nechranice": {
+        "latitude": 50.359,
+        "longitude": 13.386707,
+        "type": "dam"
+    },
+    "Hracholusky": {
+        "latitude": 49.792,
+        "longitude": 13.1543145,
+        "type": "dam"
+    },
+    "Nýrsko": {
+        "latitude": 49.2484,
+        "longitude": 13.1251,
+        "type": "dam"
+    },
+    "Švihov": {
+        "latitude": 49.71168,
+        "longitude": 15.1082195,
+        "type": "dam"
+    },
+    "Dlouhé stráně": {
+        "latitude": 50.1366,
+        "longitude": 17.0383,
+        "type": "dam"
+    },
+    "Dalešice": {
+        "latitude": 49.1431186,
+        "longitude": 16.0996699,
+        "type": "dam"
+    },
+    "Nové Mlýny": {
+        "latitude": 48.9038344,
+        "longitude": 16.6511407,
+        "type": "dam"
+    },
+    "Vranov": {
+        "latitude": 48.8982,
+        "longitude": 15.7433,
+        "type": "dam"
+    },
+    "Slezská Harta": {
+        "latitude": 49.9145848,
+        "longitude": 17.5349575,
+        "type": "dam"
     }
 }
