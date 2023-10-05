@@ -243,5 +243,30 @@
         "latitude": 50.01608325,
         "longitude": 13.37309118797958,
         "type": "water"
+    },
+    "Otava": {
+        "latitude": 49.2629341,
+        "longitude": 13.8548711,
+        "type": "river"
+    },
+    "Úslava": {
+        "latitude": 49.4991427,
+        "longitude": 13.5133496,
+        "type": "river"
+    },
+    "Úhlava": {
+        "latitude": 49.4596949,
+        "longitude": 13.2701609,
+        "type": "river"
+    },
+    "Mže": {
+        "latitude": 49.7676471,
+        "longitude": 12.9260672,
+        "type": "river"
+    },
+    "Berounka": {
+        "latitude": 49.9719009,
+        "longitude": 13.7862543,
+        "type": "river"
     }
 }
