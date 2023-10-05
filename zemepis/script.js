@@ -88,3 +88,9 @@ function setNewPoi() {
 }
 // Initialize with the first POI
 setNewPoi();
+
+// Get the submit button element
+const submitButton = document.getElementById('submitGuess');
+
+// Add an event listener that will call the submitGuess() function when the button is clicked
+submitButton.addEventListener('click', submitGuess);
