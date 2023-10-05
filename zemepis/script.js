@@ -60,8 +60,9 @@ function setNewPoi() {
             return "přehradi";
           } else if (poiType === "lake") {
             return "rybník nebo jezero";
-          } else if (poiType === "water") {
+          } else if (poiType === "lake") {
             return "rybník nebo jezero";
+
           } else {
             return ("nevím, co to je, databáze říká "+ poiType);
           }
@@ -88,7 +89,7 @@ fetch('coordinates.json')
         setNewPoi();
     })
     .catch(error => console.error('Error loading coordinates:', error));
-
+    
 // Function to shuffle an array
 function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
