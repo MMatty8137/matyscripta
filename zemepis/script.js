@@ -57,7 +57,9 @@ function setNewPoi() {
         if (poiType === "river") {
             return "řeku";
           } else if (poiType === "reservoir") {
-            return "přehradi";
+            return "přehradu";
+          } else if (poiType === "dam") {
+            return "přehradu";
           } else if (poiType === "lake") {
             return "rybník nebo jezero";
           } else if (poiType === "lake") {
