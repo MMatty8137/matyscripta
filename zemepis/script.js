@@ -23,6 +23,24 @@ var lastMarker = [];
 var lastPOI = []
 var lastLine = []
 const maxPins = 5
+var userGuess = []
+
+function sumFloats(floatList) {
+    let sum = 0;
+
+    for (let i = 0; i < floatList.length; i++) {
+        sum += parseFloat(floatList[i]);
+    }
+
+    return sum;
+}
+
+function averageFloats(floatList) {
+    const totalSum = sumFloats(floatList);
+    const numberOfFloats = floatList.length;
+    
+    return totalSum / numberOfFloats;
+}
 
 function submitGuess() {
     if (marker) {
@@ -30,6 +48,7 @@ function submitGuess() {
         var distance = calculateDistance(guessCoords, actualCoords);
         document.getElementById('result').innerHTML = 'a tvůj odhad byl asi ' + distance.toFixed(1) + ' kilometrů od cíle.';
         
+        userGuess[currentPoiIndex] = distance.toFixed(1)
         if (lastMarker.length > maxPins) {
             map.removeLayer(lastMarker[currentPoiIndex-maxPins]);
         } 
@@ -53,7 +72,8 @@ function submitGuess() {
         if (currentPoiIndex < poiList.length) {
             setNewPoi();
         } else {
-            document.getElementById('result').innerHTML += "<br>End of the game.";
+            result = averageFloats(userGuess)
+            document.getElementById('result').innerHTML += "<br>Konec, průměrná odchylka <b> " + result.toFixed(1) + ' </b> kilometrů od cíle.';
         }
     } else {
         document.getElementById('result').innerHTML = 'Please set a pin on the map first.';
