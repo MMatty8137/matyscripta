@@ -43,11 +43,11 @@ function averageFloats(floatList) {
 }
 
 function getMarkSchool(result) {
-    if (result < 10) {return 1}
-    if (result < 20) {return 2}
-    if (result < 30) {return 3}
-    if (result < 40) {return 4}
-    if (result > 40) {return 5}
+    if (result < 12) {return 1}
+    if (result < 24) {return 2}
+    if (result < 36) {return 3}
+    if (result < 48) {return 4}
+    if (result > 48) {return 5}
 
 }
 
@@ -83,7 +83,7 @@ function submitGuess() {
         } else {
             result = averageFloats(userGuess)
             markSchool = getMarkSchool(result)
-            document.getElementById('result').innerHTML += "<br>Konec, průměrná odchylka <b> " + result.toFixed(1) + ' </b> kilometrů od cíle, <br> za to by ti Pavlíček dal tak za ' + markSchool + ".";
+            document.getElementById('result').innerHTML += "<br><br>Konec, průměrná odchylka <b> " + result.toFixed(1) + ' </b> kilometrů od cíle, <br> za to by ti Pavlíček dal tak za ' + markSchool + ".";
         }
     } else {
         document.getElementById('result').innerHTML = 'Please set a pin on the map first.';
