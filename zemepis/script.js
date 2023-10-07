@@ -10,6 +10,7 @@ var marker;
 var currentPoiIndex = 0;
 var actualCoords;
 var poiList; // Declare poiList globally
+var previousPoiName = '';
 
 function onMapClick(e) {
     if (marker) {
@@ -47,11 +48,16 @@ function calculateDistance(guessCoords, actualCoords) {
 
 function setNewPoi() {
     if (marker) {
-      map.removeLayer(marker);
+        map.removeLayer(marker);
     }
+
+    // Store the current term as the previous term
+    previousPoiName = document.getElementById('poi-name').innerHTML;
+
     var currentPoi = poiList[currentPoiIndex];
     actualCoords = currentPoi[1];
     document.getElementById('poi-name').innerHTML = currentPoi[0];
+    document.getElementById('previous-poi').innerHTML = previousPoiName;
 
     function intepretPoi(poiType) {
         if (Array.isArray(poiType)) {
@@ -115,5 +121,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Open mapy.cz with the query
         window.open(`https://mapy.cz/?q=${encodeURIComponent(poiName)}`);
+    });
+
+    const previousPoiElement = document.getElementById('previous-poi');
+    previousPoiElement.addEventListener('click', function() {
+        const previousPoiName = this.innerText; // Get the text content of #previous-poi
+
+        // Open mapy.cz with the query of the previous term
+        window.open(`https://mapy.cz/?q=${encodeURIComponent(previousPoiName)}`);
     });
 });

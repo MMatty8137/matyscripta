@@ -15,9 +15,15 @@
     <h1>Slepá mapa na Zeměpis - vodstvo</h1>
     <div id="map"></div>
     <button id="submitGuess">Potvrdit můj výběr</button>
-    <div id="result"></div>
-    <h3 style="margin: 0.5em;">Aktuálně hledáš</h3>
-    <div id="poi-type" style="margin: 0px; break-after: avoid;"></div><h2 id="poi-name"></h2>
+    <div id="result" style="margin: 1em"></div>
+    <div style="display: inline-flex; align-items: center;">
+        <p style="margin: 0.3em; margin-right: 0.3em;">Najdi</p>
+        <div id="poi-type" style="margin: 0;"></div>
+    </div>
+    
+    <h2 id="poi-name" style="border: 0; margin: 0;"></h2>
+    
+    <p>Před chvílí jsi hledal: <span id="previous-poi" style="margin: 0px;  font-weight: bold;"></span></p>
     <div class="bottomright">made with ❤️ by <a style="color: rgba(0, 0, 0, 0.8); text-decoration:none" href="https://github.com/matyasmatta/">@matyasmatta</a></div>
 
 </body>
