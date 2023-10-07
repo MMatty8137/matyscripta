@@ -32,6 +32,7 @@ var map = L.map('map', {
     minZoom: minZoom,
 }).setView([50.0, 15.5], 7);
 
+map.setMaxBounds(  [[-90,-180],   [90,180]]  )
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: maxZoom,
 }).addTo(map);
