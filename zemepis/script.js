@@ -54,19 +54,25 @@ function setNewPoi() {
     document.getElementById('poi-name').innerHTML = currentPoi[0];
 
     function intepretPoi(poiType) {
-        if (poiType === "river") {
+        if (Array.isArray(poiType)) {
+            poiType = poiType[0]; // Pick the first value from the list
+        }
+
+        if (poiType === "řeka") {
             return "řeku";
-          } else if (poiType === "reservoir") {
+          } else if (poiType === "přehrada") {
             return "přehradu";
-          } else if (poiType === "dam") {
-            return "přehradu";
-          } else if (poiType === "lake") {
-            return "rybník nebo jezero";
-          } else if (poiType === "lake") {
-            return "rybník nebo jezero";
+          } else if (poiType === "pahorkatina") {
+            return "pahorkatinu";
+          } else if (poiType === "hora") {
+            return "horu";
+          } else if (poiType === "nížina") {
+            return "nížinu";
+          } else if (poiType === "brána") {
+            return "bránu";
 
           } else {
-            return ("nevím, co to je, databáze říká "+ poiType);
+            return poiType;
           }
         }
     document.getElementById('poi-type').innerHTML = intepretPoi(currentPoi[1][2]); // Access 'type' from currentPoi[1]
