@@ -15,15 +15,20 @@
     <h1>Slepá mapa na Zeměpis - povrch</h1>
     <div id="map"></div>
     <button id="submitGuess">Potvrdit můj výběr</button>
-    <div id="result" style="margin: 1em"></div>
-    <div style="display: inline-flex; align-items: center;">
-        <p style="margin: 0.3em; margin-right: 0.3em;">Najdi</p>
+    <div style="display: inline-flex; align-items: center; padding-top: 0.6em">
+        <p style="margin: 0em; margin-right: 0.3em;">Najdi</p>
         <div id="poi-type" style="margin: 0;"></div>
     </div>
     
-    <h2 id="poi-name" style="border: 0; margin: 0;"></h2>
+    <h2 id="poi-name" style="border: 0; margin-bottom: 5px; margin-top: 0;"></h2>
     
-    <p>Před chvílí jsi hledal: <span id="previous-poi" style="margin: 0px;  font-weight: bold;"></span></p>
+    <p style="margin: 0.3em; display: inline-block;">
+        Před chvílí jsi hledal 
+        <span id="previous-poi" style="margin: 0; font-weight: bold;"></span>
+        <div id="result" style="margin: 0; border: 0; font-weight: normal; display: inline;"></div>
+    </p>
+    
+
     <div class="bottomright">made with ❤️ by <a style="color: rgba(0, 0, 0, 0.8); text-decoration:none" href="https://github.com/matyasmatta/">@matyasmatta</a></div>
     <div class="bottomleft"><a href="https://www.buymeacoffee.com/matyasmatta"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=matyasmatta&button_colour=FFDD00&font_colour=000000&font_family=Inter&outline_colour=000000&coffee_colour=ffffff" /></a></div>
 

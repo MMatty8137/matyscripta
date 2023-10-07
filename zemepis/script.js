@@ -24,7 +24,7 @@ function submitGuess() {
     if (marker) {
         var guessCoords = marker.getLatLng();
         var distance = calculateDistance(guessCoords, actualCoords);
-        document.getElementById('result').innerHTML = 'Tvůj odhad byl přibližně ' + distance.toFixed(1) + ' kilometrů od cíle.';
+        document.getElementById('result').innerHTML = 'a tvůj odhad byl asi ' + distance.toFixed(1) + ' kilometrů od cíle.';
         L.marker(guessCoords).addTo(map);
         L.marker(actualCoords, {
             icon: L.divIcon({
