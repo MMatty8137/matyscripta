@@ -1,0 +1,467 @@
+{
+    "Barcelona": {
+        "latitude": 41.3955651,
+        "longitude": 2.1404263,
+        "type": "město"
+    },
+    "Cairo": {
+        "latitude": 30.0488771,
+        "longitude": 31.5645193,
+        "type": "město"
+    },
+    "Mumbai": {
+        "latitude": 19.09729,
+        "longitude": 72.8790408,
+        "type": "město"
+    },
+    "Sydney": {
+        "latitude": -33.7413113,
+        "longitude": 150.8023618,
+        "type": "město"
+    },
+    "Rome": {
+        "latitude": 41.9106001,
+        "longitude": 12.545114,
+        "type": "město"
+    },
+    "Berlin": {
+        "latitude": 52.5118917,
+        "longitude": 13.4247525,
+        "type": "město"
+    },
+    "Prague": {
+        "latitude": 50.0649546,
+        "longitude": 14.4656125,
+        "type": "město"
+    },
+    "Rio de Janeiro": {
+        "latitude": -22.612191,
+        "longitude": -43.190673,
+        "type": "město"
+    },
+    "Bangkok": {
+        "latitude": 13.7401082,
+        "longitude": 100.633161,
+        "type": "město"
+    },
+    "Istanbul": {
+        "latitude": 41.0107526,
+        "longitude": 28.9662187,
+        "type": "město"
+    },
+    "Nairobi": {
+        "latitude": -1.2811939,
+        "longitude": 36.8172449,
+        "type": "město"
+    },
+    "Amsterdam": {
+        "latitude": 52.3570361,
+        "longitude": 4.9182245,
+        "type": "město"
+    },
+    "Montreal": {
+        "latitude": 45.5574056,
+        "longitude": -73.7350483,
+        "type": "město"
+    },
+    "Buenos Aires": {
+        "latitude": -34.6127047,
+        "longitude": -58.433296,
+        "type": "město"
+    },
+    "Seoul": {
+        "latitude": 37.5715419,
+        "longitude": 126.9741017,
+        "type": "město"
+    },
+    "Vienna": {
+        "latitude": 48.2257769,
+        "longitude": 16.3796724,
+        "type": "město"
+    },
+    "Kuala Lumpur": {
+        "latitude": 3.1431074,
+        "longitude": 101.6868134,
+        "type": "město"
+    },
+    "Warsaw": {
+        "latitude": 52.2380476,
+        "longitude": 21.06142,
+        "type": "město"
+    },
+    "Jakarta": {
+        "latitude": -6.173199,
+        "longitude": 106.8270488,
+        "type": "město"
+    },
+    "Dublin": {
+        "latitude": 53.3570968,
+        "longitude": -6.2509545,
+        "type": "město"
+    },
+    "Copenhagen": {
+        "latitude": 55.6751055,
+        "longitude": 12.5936231,
+        "type": "město"
+    },
+    "Budapest": {
+        "latitude": 47.4869865,
+        "longitude": 19.1300163,
+        "type": "město"
+    },
+    "Lisbon": {
+        "latitude": 38.7472923,
+        "longitude": -9.1580842,
+        "type": "město"
+    },
+    "Helsinki": {
+        "latitude": 60.1183791,
+        "longitude": 25.0186573,
+        "type": "město"
+    },
+    "Kiev": {
+        "latitude": 50.4125308,
+        "longitude": 30.531252,
+        "type": "město"
+    },
+    "Beirut": {
+        "latitude": 33.8976301,
+        "longitude": 35.47843,
+        "type": "město"
+    },
+    "Athens": {
+        "latitude": 37.9924252,
+        "longitude": 23.7387219,
+        "type": "město"
+    },
+    "Lima": {
+        "latitude": -12.0530435,
+        "longitude": -77.0451169,
+        "type": "město"
+    },
+    "Manila": {
+        "latitude": 14.5971795,
+        "longitude": 120.9089351,
+        "type": "město"
+    },
+    "Stockholm": {
+        "latitude": 59.3379722,
+        "longitude": 17.9803799,
+        "type": "město"
+    },
+    "Tehran": {
+        "latitude": 35.7050297,
+        "longitude": 51.347675,
+        "type": "město"
+    },
+    "Casablanca": {
+        "latitude": 33.5707743,
+        "longitude": -7.6019309,
+        "type": "město"
+    },
+    "Hanoi": {
+        "latitude": 21.0302646,
+        "longitude": 105.8537607,
+        "type": "město"
+    },
+    "Sofia": {
+        "latitude": 42.697964,
+        "longitude": 23.3137815,
+        "type": "město"
+    },
+    "Riyadh": {
+        "latitude": 24.6407883,
+        "longitude": 46.7160103,
+        "type": "město"
+    },
+    "Oslo": {
+        "latitude": 59.9763322,
+        "longitude": 10.7202771,
+        "type": "město"
+    },
+    "Auckland": {
+        "latitude": -36.4784478,
+        "longitude": 174.8997722,
+        "type": "město"
+    },
+    "Zurich": {
+        "latitude": 47.3802321,
+        "longitude": 8.5367236,
+        "type": "město"
+    },
+    "Vilnius": {
+        "latitude": 54.705374,
+        "longitude": 25.2529965,
+        "type": "město"
+    },
+    "Riga": {
+        "latitude": 56.9761546,
+        "longitude": 24.128697,
+        "type": "město"
+    },
+    "Bratislava": {
+        "latitude": 48.1413651,
+        "longitude": 17.115287,
+        "type": "město"
+    },
+    "Ljubljana": {
+        "latitude": 46.0628888,
+        "longitude": 14.5819748,
+        "type": "město"
+    },
+    "Zagreb": {
+        "latitude": 45.8440884,
+        "longitude": 15.9643599,
+        "type": "město"
+    },
+    "Belgrade": {
+        "latitude": 44.7032808,
+        "longitude": 20.4145134,
+        "type": "město"
+    },
+    "Bucharest": {
+        "latitude": 44.4437044,
+        "longitude": 26.0961255,
+        "type": "město"
+    },
+    "Skopje": {
+        "latitude": 42.0320956,
+        "longitude": 21.3699746,
+        "type": "město"
+    },
+    "Kinshasa": {
+        "latitude": -4.3196515,
+        "longitude": 15.3125974,
+        "type": "město"
+    },
+    "Medellín": {
+        "latitude": 6.2777091,
+        "longitude": -75.5964155,
+        "type": "město"
+    },
+    "Yerevan": {
+        "latitude": 40.1569617,
+        "longitude": 44.4919373,
+        "type": "město"
+    },
+    "Tashkent": {
+        "latitude": 41.2991487,
+        "longitude": 69.2993385,
+        "type": "město"
+    },
+    "Harare": {
+        "latitude": -17.8501575,
+        "longitude": 31.0494377,
+        "type": "město"
+    },
+    "Baku": {
+        "latitude": 40.3729969,
+        "longitude": 49.8805328,
+        "type": "město"
+    },
+    "Dar es Salaam": {
+        "latitude": -6.8601598,
+        "longitude": 39.4675376,
+        "type": "město"
+    },
+    "Minsk": {
+        "latitude": 53.8876747,
+        "longitude": 27.7269823,
+        "type": "město"
+    },
+    "Chisinau": {
+        "latitude": 47.0128489,
+        "longitude": 28.8404571,
+        "type": "město"
+    },
+    "N'Djamena": {
+        "latitude": 12.15574,
+        "longitude": 15.0339333,
+        "type": "město"
+    },
+    "Ouagadougou": {
+        "latitude": 12.3701994,
+        "longitude": -1.5270945,
+        "type": "město"
+    },
+    "Lusaka": {
+        "latitude": -15.4143537,
+        "longitude": 28.2818414,
+        "type": "město"
+    },
+    "Asunción": {
+        "latitude": -25.2981454,
+        "longitude": -57.5992774,
+        "type": "město"
+    },
+    "Bishkek": {
+        "latitude": 42.9048422,
+        "longitude": 74.5863037,
+        "type": "město"
+    },
+    "Ashgabat": {
+        "latitude": 37.9435141,
+        "longitude": 58.2354536,
+        "type": "město"
+    },
+    "Dushanbe": {
+        "latitude": 38.5920993,
+        "longitude": 68.7879612,
+        "type": "město"
+    },
+    "Tbilisi": {
+        "latitude": 41.7338548,
+        "longitude": 44.8067462,
+        "type": "město"
+    },
+    "Port Moresby": {
+        "latitude": -9.4722983,
+        "longitude": 147.1599504,
+        "type": "město"
+    },
+    "Paramaribo": {
+        "latitude": 29.2085492,
+        "longitude": -29.1442743,
+        "type": "město"
+    },
+    "Antananarivo": {
+        "latitude": -18.9080635,
+        "longitude": 47.5255809,
+        "type": "město"
+    },
+    "Windhoek": {
+        "latitude": -22.5509099,
+        "longitude": 17.0587441,
+        "type": "město"
+    },
+    "Lilongwe": {
+        "latitude": -13.9874795,
+        "longitude": 33.7681439,
+        "type": "město"
+    },
+    "Bujumbura": {
+        "latitude": -3.333902,
+        "longitude": 29.3406661,
+        "type": "město"
+    },
+    "Dodoma": {
+        "latitude": -6.1533817,
+        "longitude": 35.7654199,
+        "type": "město"
+    },
+    "Juba": {
+        "latitude": 57.8144315,
+        "longitude": 26.9177695,
+        "type": "město"
+    },
+    "Mogadishu": {
+        "latitude": 2.0047528,
+        "longitude": 45.4987849,
+        "type": "město"
+    },
+    "Banjul": {
+        "latitude": 13.4467677,
+        "longitude": -16.5660782,
+        "type": "město"
+    },
+    "Gaborone": {
+        "latitude": -24.6562637,
+        "longitude": 25.9088474,
+        "type": "město"
+    },
+    "Niamey": {
+        "latitude": 13.5123827,
+        "longitude": 2.1065848,
+        "type": "město"
+    },
+    "Nouakchott": {
+        "latitude": 18.1476437,
+        "longitude": -15.9158939,
+        "type": "město"
+    },
+    "Praia": {
+        "latitude": 14.9182716,
+        "longitude": -23.5095095,
+        "type": "město"
+    },
+    "Lomé": {
+        "latitude": 6.1602813,
+        "longitude": 1.2405901,
+        "type": "město"
+    },
+    "Porto-Novo": {
+        "latitude": 17.0209471,
+        "longitude": -25.065316,
+        "type": "město"
+    },
+    "Conakry": {
+        "latitude": 9.596842,
+        "longitude": -13.6570542,
+        "type": "město"
+    },
+    "Reykjavik": {
+        "latitude": 64.1814755,
+        "longitude": -21.6929146,
+        "type": "město"
+    },
+    "Melbourne": {
+        "latitude": -37.9245658,
+        "longitude": 145.318275,
+        "type": "město"
+    },
+    "Belmopan": {
+        "latitude": 17.2499016,
+        "longitude": -88.766202,
+        "type": "město"
+    },
+    "Moroni": {
+        "latitude": 10.4055483,
+        "longitude": -10.6131121,
+        "type": "město"
+    },
+    "Suva": {
+        "latitude": 21.6304659,
+        "longitude": 93.3763676,
+        "type": "město"
+    },
+    "Majuro": {
+        "latitude": 7.1430542,
+        "longitude": 171.2231826,
+        "type": "město"
+    },
+    "Funafuti": {
+        "latitude": -8.5555797,
+        "longitude": 178.8073316,
+        "type": "město"
+    },
+    "Nuku'alofa": {
+        "latitude": -21.1324188,
+        "longitude": -175.201808,
+        "type": "město"
+    },
+    "Port Vila": {
+        "latitude": -17.7395352,
+        "longitude": 168.3150163,
+        "type": "město"
+    },
+    "Palikir": {
+        "latitude": 6.9227889,
+        "longitude": 158.1627142,
+        "type": "město"
+    },
+    "Bandar Seri Begawan": {
+        "latitude": 4.9094497,
+        "longitude": 114.9369881,
+        "type": "město"
+    },
+    "Vaduz": {
+        "latitude": 47.1433499,
+        "longitude": 9.5533767,
+        "type": "město"
+    },
+    "Castries": {
+        "latitude": 46.5780426,
+        "longitude": 3.4258473,
+        "type": "město"
+    }
+}

@@ -1,9 +1,39 @@
+const urlParams = new URLSearchParams(window.location.search);
+const jsonFile = urlParams.get('json') || 'povrch.json';
+const limitPoiIndex = urlParams.get('max') || null;
+const gameName = jsonFile.substring(0, jsonFile.length - 5);
+console.log(gameName);
+pageName = "Slepá mapa - " + gameName
+if (limitPoiIndex != null) {
+    if (limitPoiIndex == 1) {
+        inflectedPojem = "pojem"
+    } else if (limitPoiIndex >= 2 && limitPoiIndex <5) {
+        inflectedPojem = "pojmy"
+    } else {
+        inflectedPojem = "pojmů"
+    }
+
+    pageName = "Slepá mapa - " + gameName + " - " + limitPoiIndex + " " + inflectedPojem;
+}
+document.getElementById('page-name').innerHTML += pageName;
+
+var zoom;
+
+console.log(jsonFile)
+if (jsonFile == 'world.json') {
+    minZoom = 1
+    maxZoom = 4
+} else {
+    maxZoom = 9
+    minZoom = 5
+}
+
 var map = L.map('map', {
-    minZoom: 6,
-}).setView([50.0, 14.0], 10);
+    minZoom: minZoom,
+}).setView([50.0, 15.5], 7);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 10,
+    maxZoom: maxZoom,
 }).addTo(map);
 
 var marker;
@@ -11,6 +41,8 @@ var currentPoiIndex = 0;
 var actualCoords;
 var poiList; // Declare poiList globally
 var previousPoiName = '';
+
+
 
 function onMapClick(e) {
     if (marker) {
@@ -78,9 +110,13 @@ function submitGuess() {
             dashArray: '5, 10' // This sets the dash pattern to 5 pixels on, 10 pixels off
         }).addTo(map);
         currentPoiIndex++;
-        if (currentPoiIndex < poiList.length) {
+        if (currentPoiIndex == limitPoiIndex){
+            result = averageFloats(userGuess)
+            markSchool = getMarkSchool(result)
+            document.getElementById('result').innerHTML += "<br><br>Konec, průměrná odchylka <b> " + result.toFixed(1) + ' </b> kilometrů od cíle, <br> za to by ti Pavlíček dal tak za ' + markSchool + ".";
+        } else if (currentPoiIndex < poiList.length) {
             setNewPoi();
-        } else {
+        }  else {
             result = averageFloats(userGuess)
             markSchool = getMarkSchool(result)
             document.getElementById('result').innerHTML += "<br><br>Konec, průměrná odchylka <b> " + result.toFixed(1) + ' </b> kilometrů od cíle, <br> za to by ti Pavlíček dal tak za ' + markSchool + ".";
@@ -137,7 +173,7 @@ function setNewPoi() {
 const submitButton = document.getElementById('submitGuess');
 submitButton.addEventListener('click', submitGuess);
 
-fetch('coordinates.json')
+fetch(jsonFile)
     .then(response => response.json())
     .then(data => {
         poiList = Object.entries(data).map(entry => {
