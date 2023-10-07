@@ -19,17 +19,35 @@ function onMapClick(e) {
     marker = L.marker(e.latlng).addTo(map);
 }
 map.on('click', onMapClick);
+var lastMarker = [];
+var lastPOI = []
+var lastLine = []
+const maxPins = 5
 
 function submitGuess() {
     if (marker) {
         var guessCoords = marker.getLatLng();
         var distance = calculateDistance(guessCoords, actualCoords);
         document.getElementById('result').innerHTML = 'a tvůj odhad byl asi ' + distance.toFixed(1) + ' kilometrů od cíle.';
-        L.marker(guessCoords).addTo(map);
-        L.marker(actualCoords, {
+        
+        if (lastMarker.length > maxPins) {
+            map.removeLayer(lastMarker[currentPoiIndex-maxPins]);
+        } 
+        if (lastPOI.length > maxPins) {
+            map.removeLayer(lastPOI[currentPoiIndex-maxPins]);
+        } 
+        if (lastLine.length > maxPins) {
+            map.removeLayer(lastLine[currentPoiIndex-maxPins]);
+        } 
+        lastMarker[currentPoiIndex] = L.marker(guessCoords).addTo(map);
+        lastPOI[currentPoiIndex] = L.marker(actualCoords, {
             icon: L.divIcon({
                 className: 'poi-marker'
             })
+        }).addTo(map);
+        lastLine[currentPoiIndex] = L.polyline([guessCoords, actualCoords], {
+            color: 'blue', // You can change the color to your preference
+            dashArray: '5, 10' // This sets the dash pattern to 5 pixels on, 10 pixels off
         }).addTo(map);
         currentPoiIndex++;
         if (currentPoiIndex < poiList.length) {
