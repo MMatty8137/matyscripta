@@ -87,8 +87,15 @@ function submitGuess() {
     if (marker) {
         var guessCoords = marker.getLatLng();
         var distance = calculateDistance(guessCoords, actualCoords);
-        document.getElementById('result').innerHTML = 'a tvůj odhad byl asi <b>' + distance.toFixed(1) + '</b> kilometrů od cíle.';
-        
+        document.getElementById('result').innerHTML = 'a tvůj odhad byl asi <b>' + distance.toFixed(1) + '</b> kilometrů od cíle,';
+        // Update how many POI's are left in session
+        if (((limitPoiIndex - currentPoiIndex) == 1) || ((poiList.length - currentPoiIndex) == 1)) {
+            document.getElementById('left-over').innerHTML =  ""
+        } else if (limitPoiIndex != null) {
+            document.getElementById('left-over').innerHTML =  "a zbývá ti " + (limitPoiIndex - currentPoiIndex - 1) + " pojmů."
+        } else if ((limitPoiIndex == null) && ((poiList.length - currentPoiIndex) != 1))   {
+            document.getElementById('left-over').innerHTML =  "a zbývá ti " + (poiList.length - currentPoiIndex - 1) + " pojmů."
+        }
         userGuess[currentPoiIndex] = distance.toFixed(1)
         if (lastMarker.length > maxPins) {
             map.removeLayer(lastMarker[currentPoiIndex-maxPins]);
@@ -110,6 +117,7 @@ function submitGuess() {
             dashArray: '5, 10' // This sets the dash pattern to 5 pixels on, 10 pixels off
         }).addTo(map);
         currentPoiIndex++;
+
         if (currentPoiIndex == limitPoiIndex){
             result = averageFloats(userGuess)
             markSchool = getMarkSchool(result)
@@ -140,8 +148,20 @@ function setNewPoi() {
 
     var currentPoi = poiList[currentPoiIndex];
     actualCoords = currentPoi[1];
-    document.getElementById('poi-name').innerHTML = currentPoi[0];
+    console.log(currentPoi)
+    try {
+    var mountainHeight = currentPoi[1][2].find(item => typeof item === 'number');
+    if (mountainHeight) {
+        document.getElementById('poi-name').innerHTML = currentPoi[0] + " - " + mountainHeight + " m. n. m"
+    } else {
+        document.getElementById('poi-name').innerHTML = currentPoi[0]
+    }
     document.getElementById('previous-poi').innerHTML = previousPoiName;
+    } catch {
+        document.getElementById('poi-name').innerHTML = currentPoi[0]
+    }
+
+    mountainHeight = currentPoi[3]
 
     function intepretPoi(poiType) {
         if (Array.isArray(poiType)) {
