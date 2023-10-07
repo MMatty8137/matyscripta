@@ -106,3 +106,14 @@ function shuffleArray(array) {
     }
     return array;
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const poiNameElement = document.getElementById('poi-name');
+
+    poiNameElement.addEventListener('click', function() {
+        const poiName = this.innerText; // Get the text content of #poi-name
+
+        // Open mapy.cz with the query
+        window.open(`https://mapy.cz/?q=${encodeURIComponent(poiName)}`);
+    });
+});
