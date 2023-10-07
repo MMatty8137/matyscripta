@@ -55,7 +55,7 @@ function submitGuess() {
     if (marker) {
         var guessCoords = marker.getLatLng();
         var distance = calculateDistance(guessCoords, actualCoords);
-        document.getElementById('result').innerHTML = 'a tvůj odhad byl asi ' + distance.toFixed(1) + ' kilometrů od cíle.';
+        document.getElementById('result').innerHTML = 'a tvůj odhad byl asi <b>' + distance.toFixed(1) + '</b> kilometrů od cíle.';
         
         userGuess[currentPoiIndex] = distance.toFixed(1)
         if (lastMarker.length > maxPins) {
