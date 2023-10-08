@@ -47,7 +47,7 @@ ul {
     padding: 5px; /* Add padding to the box */
     background-color: white; /* Fill with white color */
     border-radius: 20px; /* Add rounded corners */
-  }
+}
 
   .bottomleft {
     position: fixed;
@@ -55,5 +55,17 @@ ul {
     left: 16px;
     font-size: 18px;
     z-index: 999; /* Ensure it's above other content */
-  }
+}
 
+@media (max-width: 600px) {
+    .bottomright {
+        display: none;
+    }
+    .bottomleft {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: static;
+        margin: 0;
+    }
+}

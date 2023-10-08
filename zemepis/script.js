@@ -236,3 +236,15 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open(`https://mapy.cz/?q=${encodeURIComponent(previousPoiName)}`);
     });
 });
+
+window.addEventListener('DOMContentLoaded', function() {
+    if (window.innerWidth < 400) {
+        var warningElement = document.createElement('div');
+        warningElement.textContent = 'Varování: Stránka je optimalizovaná pro větší obrazovky.';
+        warningElement.style.backgroundColor = 'red';
+        warningElement.style.color = 'white';
+        warningElement.style.padding = '10px';
+        warningElement.style.textAlign = 'center';
+        document.body.insertBefore(warningElement, document.body.firstChild);
+    }
+});
