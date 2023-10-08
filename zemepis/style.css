@@ -9,8 +9,10 @@ body {
 }
 
 #map {
-    height: 500px;
-    width: 800px;
+    max-height: 500px;
+    max-width: 800px;
+    height: 50%;
+    width: 90%;
 }
 
 button {
@@ -54,3 +56,4 @@ ul {
     font-size: 18px;
     z-index: 999; /* Ensure it's above other content */
   }
+
