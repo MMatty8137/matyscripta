@@ -57,6 +57,7 @@ var lastPOI = []
 var lastLine = []
 const maxPins = 5
 var userGuess = []
+var badGuesses = []
 
 function sumFloats(floatList) {
     let sum = 0;
@@ -89,6 +90,11 @@ function submitGuess() {
         var guessCoords = marker.getLatLng();
         var distance = calculateDistance(guessCoords, actualCoords);
         document.getElementById('result').innerHTML = 'a tvůj odhad byl asi <b>' + distance.toFixed(1) + '</b> kilometrů od cíle,';
+        var currentPoi = document.getElementById('poi-name').innerHTML;
+        console.log(distance, currentPoi)
+        if (distance.toFixed(1) > 25) {
+            badGuesses.push(currentPoi)
+        }
         // Update how many POI's are left in session
         if (((limitPoiIndex - currentPoiIndex) == 1) || ((poiList.length - currentPoiIndex) == 1)) {
             document.getElementById('left-over').innerHTML =  ""
@@ -119,16 +125,21 @@ function submitGuess() {
         }).addTo(map);
         currentPoiIndex++;
 
-        if (currentPoiIndex == limitPoiIndex){
-            result = averageFloats(userGuess)
-            markSchool = getMarkSchool(result)
-            document.getElementById('result').innerHTML += "<br><br>Konec, průměrná odchylka <b> " + result.toFixed(1) + ' </b> kilometrů od cíle, <br> za to by ti Pavlíček dal tak za ' + markSchool + ".";
-        } else if (currentPoiIndex < poiList.length) {
+        result = averageFloats(userGuess);
+        markSchool = getMarkSchool(result);
+        let message = "<br><br>Konec, průměrná odchylka <b>" + result.toFixed(1) + "</b> kilometrů od cíle, <br>za to by ti Pavlíček dal tak za " + markSchool + ".<br><br>A nejvíce ti nešly: "+badGuesses.join(', ');
+
+        if (badGuesses.length > 10) {
+            message = "<br><br><b> Whoah, uč se radši!</b>" + message
+        }
+        if (currentPoiIndex == limitPoiIndex) {
+            message = "Nejvíce ti nešly" + message;
+        }
+        
+        if (currentPoiIndex == limitPoiIndex || currentPoiIndex >= poiList.length) {
+            document.getElementById('result').innerHTML += message;
+        } else {
             setNewPoi();
-        }  else {
-            result = averageFloats(userGuess)
-            markSchool = getMarkSchool(result)
-            document.getElementById('result').innerHTML += "<br><br>Konec, průměrná odchylka <b> " + result.toFixed(1) + ' </b> kilometrů od cíle, <br> za to by ti Pavlíček dal tak za ' + markSchool + ".";
         }
     } else {
         document.getElementById('result').innerHTML = 'Please set a pin on the map first.';
