@@ -1,3 +1,4 @@
+const startTime = Date.now(); 
 const urlParams = new URLSearchParams(window.location.search);
 const jsonFile = urlParams.get('json') || 'povrch.json';
 const limitPoiIndex = urlParams.get('max') || null;
@@ -85,6 +86,31 @@ function getMarkSchool(result) {
 
 }
 
+function generateCertificatePDF(averageDistance, timeElapsed) {
+    var doc = new jspdf.jsPDF('p', 'pt', 'A4');
+    // Assuming the font files are in a 'fonts' folder in your project
+    doc.addFont('Inter.ttf', 'Inter', 'normal');
+    doc.setFont('Inter');
+    doc.setFontSize(24); // Set font size to 12 points
+    doc.setTextColor(0, 0, 0); // Set text color to black
+
+
+    doc.text(`Certifikát o splnění`, 70, 40);
+    doc.setFontSize(16);
+    doc.text(`Tímto souborem se stvrzuje, že hráč dohrál hru "Slepý zemák".`, 10, 80);
+    doc.text(`Průměrná odchylka: ${averageDistance}`, 30, 120);
+    doc.text(`Celkový čas: ${timeElapsed}`, 30, 140);
+    doc.text(`Vydáno dne: ${new Date().toLocaleDateString()}`, 30, 160);
+    doc.text(`Hash: ${(Date.now()*(averageDistance+timeElapsed)).toString(16)}`, 30, 240);
+
+    return doc;
+}
+
+function downloadCertificatePDF(averageDistance, timeElapsed) {
+    const doc = generateCertificatePDF(averageDistance, timeElapsed);
+    doc.save('certificate.pdf');
+}
+
 function submitGuess() {
     if (marker) {
         var guessCoords = marker.getLatLng();
@@ -126,8 +152,12 @@ function submitGuess() {
         currentPoiIndex++;
 
         result = averageFloats(userGuess);
-        markSchool = getMarkSchool(result);
-        let message = "<br><br>Konec, průměrná odchylka <b>" + result.toFixed(1) + "</b> kilometrů od cíle, <br>za to by ti Pavlíček dal tak za " + markSchool + ".<br><br>A nejvíce ti nešly: "+badGuesses.join(', ');
+        const endTime = Date.now(); 
+        const elapsedTime = endTime - startTime;
+        // markSchool = getMarkSchool(result)
+        let message = '<br><br>Konec, průměrná odchylka <b>' + result.toFixed(1) + '</b> kilometrů od cíle.<br><br>A celkem ti to trvalo ' + (elapsedTime/1000) + ' sekund!<br><br><button onclick="downloadCertificatePDF(' + result + ',' + elapsedTime + ')">Download Certificate (PDF)</button>';
+
+        // let message = "<br><br>Konec, průměrná odchylka <b>" + result.toFixed(1) + "</b> kilometrů od cíle, <br>za to by ti Pavlíček dal tak za " + markSchool + ".<br><br>A nejvíce ti nešly: "+badGuesses.join(', ');
 
         if (badGuesses.length > 10) {
             message = "<br><br><b> Whoah, uč se radši!</b>" + message
