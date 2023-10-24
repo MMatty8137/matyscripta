@@ -86,7 +86,7 @@ function getMarkSchool(result) {
 
 }
 
-function generateCertificatePDF(averageDistance, timeElapsed) {
+function generateCertificatePDF(averageDistance, timeElapsed, jsonFile, limitPoiIndex) {
     var doc = new jspdf.jsPDF('p', 'pt', 'A4');
     // Assuming the font files are in a 'fonts' folder in your project
     doc.addFont('Inter.ttf', 'Inter', 'normal');
@@ -97,18 +97,21 @@ function generateCertificatePDF(averageDistance, timeElapsed) {
 
     doc.text(`Certifikát o splnění`, 70, 40);
     doc.setFontSize(16);
-    doc.text(`Tímto souborem se stvrzuje, že hráč dohrál hru "Slepý zemák".`, 10, 80);
-    doc.text(`Průměrná odchylka: ${averageDistance}`, 30, 120);
-    doc.text(`Celkový čas: ${timeElapsed}`, 30, 140);
+    doc.text(`Tímto souborem se stvrzuje, že hráč dohrál hru "Slepý zemák".`, 30, 80);
+    doc.text(`Průměrná odchylka: ${Math.round(averageDistance)} kilometrů`, 30, 120);
+    doc.text(`Celkový čas: ${(timeElapsed)/1000} sekund`, 30, 140);
     doc.text(`Vydáno dne: ${new Date().toLocaleDateString()}`, 30, 160);
-    doc.text(`Hash: ${(Date.now()*(averageDistance+timeElapsed)).toString(16)}`, 30, 240);
+
+    doc.text(`Herní json: ${jsonFile}`, 30, 200);
+    doc.text(`Celkem pojmů: ${limitPoiIndex}`, 30, 220);
+    doc.text(`Hash: ${(Date.now()*(averageDistance+timeElapsed)).toString(16)}`, 30, 350);
 
     return doc;
 }
 
-function downloadCertificatePDF(averageDistance, timeElapsed) {
-    const doc = generateCertificatePDF(averageDistance, timeElapsed);
-    doc.save('certificate.pdf');
+function downloadCertificatePDF(averageDistance, timeElapsed, jsonFile, limitPoiIndex) {
+    const doc = generateCertificatePDF(averageDistance, timeElapsed, jsonFile, limitPoiIndex);
+    doc.save('certifikát.pdf');
 }
 
 function submitGuess() {
@@ -155,7 +158,14 @@ function submitGuess() {
         const endTime = Date.now(); 
         const elapsedTime = endTime - startTime;
         // markSchool = getMarkSchool(result)
-        let message = '<br><br>Konec, průměrná odchylka <b>' + result.toFixed(1) + '</b> kilometrů od cíle.<br><br>A celkem ti to trvalo ' + (elapsedTime/1000) + ' sekund!<br><br><button onclick="downloadCertificatePDF(' + result + ',' + elapsedTime + ')">Download Certificate (PDF)</button>';
+        console.log(jsonFile, limitPoiIndex)
+        let message = `
+        <br><br>
+        Konec, průměrná odchylka <b>${result.toFixed(1)}</b> kilometrů od cíle.<br><br>
+        A celkem ti to trvalo ${(elapsedTime/1000)} sekund!<br><br>
+        <button onclick="downloadCertificatePDF(${result}, ${elapsedTime}, '${jsonFile}', ${limitPoiIndex})">Download Certificate (PDF)</button>
+    `;
+    
 
         // let message = "<br><br>Konec, průměrná odchylka <b>" + result.toFixed(1) + "</b> kilometrů od cíle, <br>za to by ti Pavlíček dal tak za " + markSchool + ".<br><br>A nejvíce ti nešly: "+badGuesses.join(', ');
 
