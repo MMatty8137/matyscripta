@@ -1,8 +1,140 @@
 const startTime = Date.now(); 
 const urlParams = new URLSearchParams(window.location.search);
+
+// Get the query string parameters.
+const queryStringParams = new URLSearchParams(window.location.search);
 const jsonFile = urlParams.get('json') || 'povrch.json';
-const limitPoiIndex = urlParams.get('max') || null;
+var limitPoiIndex = urlParams.get('max') || null;
 const gameName = jsonFile.substring(0, jsonFile.length - 5);
+var examinationModeControl = false;
+var userName = "hráč"
+
+function accuracyWarning () {
+    if (jsonFile === "vodstvo.json" && examinationModeControl === true) {
+        var warningElement = document.createElement('div');
+        var warningText = 'Veškeré objekty jsou brané jako body,_ tudíž mohou být například řeky dost mimo,_ omlouvám se, výsledky berte s rezervou.';
+        
+        // Split the text at commas and join with <br> tags
+        var warningTextWithBreaks = warningText.split('_').join('<br>');
+    
+        warningElement.innerHTML = warningTextWithBreaks;
+        warningElement.style.backgroundColor = 'red';
+        warningElement.style.color = 'white';
+        warningElement.style.padding = '10px';
+        warningElement.style.textAlign = 'center';
+        document.body.insertBefore(warningElement, document.body.firstChild);
+    }
+    
+}
+
+function getOverlay() {
+    const overlay = document.createElement("div");
+    overlay.id = "configurator-overlay";
+    overlay.style.position = "fixed";
+    overlay.style.top = "0";
+    overlay.style.left = "0";
+    overlay.style.width = "100%";
+    overlay.style.height = "100%";
+    overlay.style.background = "rgba(0, 0, 0, 0.5)";
+    overlay.style.display = "flex";
+    overlay.style.justifyContent = "center";
+    overlay.style.alignItems = "center";
+    overlay.style.zIndex = "1000"; 
+
+    const form = document.createElement("form");
+    form.style.background = "#fff";
+    form.style.padding = "15px";
+    form.style.borderRadius = "8px";
+
+    const heading = document.createElement("h2");
+    heading.textContent = "Konfigurátor hry"; // Replace with your desired heading
+    heading.style.padding = "0";
+    heading.style.margin = 0;
+    heading.style.marginBottom = "10px";
+    form.appendChild(heading);
+
+    // Add your form fields here
+    const inputField = document.createElement("input");
+    inputField.type = "text";
+    inputField.name = "fieldName";
+    inputField.placeholder = "Počet pojmů";
+    form.appendChild(inputField);
+
+    const examinationCheckbox = document.createElement("input");
+    examinationCheckbox.type = "checkbox";
+    examinationCheckbox.name = "examinationMode";
+    examinationCheckbox.id = "examinationMode";
+    examinationCheckbox.style.marginBottom = "5px";
+    examinationCheckbox.style.display = "inline-block"; 
+    form.appendChild(examinationCheckbox);
+
+    const label = document.createElement("label");
+    label.textContent = "Mód testu";
+    label.htmlFor = "examinationMode";
+    label.style.display = "inline-block"; 
+    label.style.verticalAlign = "middle"; 
+    form.appendChild(label);
+
+    // Add a line break for visual separation
+    const lineBreak = document.createElement("br");
+    form.appendChild(lineBreak);
+
+    // Add username input field (hidden by default)
+    const usernameInput = document.createElement("input");
+    usernameInput.type = "text";
+    usernameInput.name = "username";
+    usernameInput.id = "usernameField";
+    usernameInput.placeholder = "Uživatelské jméno";
+    usernameInput.style.display = "none"; // Initially hidden
+    form.appendChild(usernameInput);
+
+    // Conditionally show/hide username input field
+    examinationCheckbox.addEventListener("change", function() {
+        if (examinationCheckbox.checked) {
+            usernameInput.style.display = "block";
+        } else {
+            usernameInput.style.display = "none";
+        }
+    });
+
+    // Add a line break before the submit button
+    form.appendChild(document.createElement("br"));
+
+    const submitButton = document.createElement("button");
+    submitButton.type = "submit";
+    submitButton.textContent = "Budiž!";
+    form.appendChild(submitButton);
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const formData = new FormData(form);
+        const fieldValue = formData.get("fieldName");
+        userName = formData.get("username");
+
+        limitPoiIndex = parseInt(fieldValue);
+        examinationModeControl = formData.get("examinationMode") === "on";
+
+        if (!examinationModeControl) {
+            var bottomLeftElement = document.getElementById('buymeacoffee');
+            bottomLeftElement.style.display = 'flex';
+        }
+
+        // Close the overlay after submission
+        document.body.removeChild(overlay);
+        accuracyWarning()
+    });
+
+    overlay.appendChild(form);
+
+    document.body.appendChild(overlay);
+}
+
+
+
+if (queryStringParams.get("config") === "true") {
+    getOverlay();
+}
+
 console.log(gameName);
 pageName = "Slepá mapa - " + gameName
 if (limitPoiIndex != null) {
@@ -86,6 +218,7 @@ function getMarkSchool(result) {
 
 }
 
+
 function generateCertificatePDF(averageDistance, timeElapsed, jsonFile, limitPoiIndex) {
     var doc = new jspdf.jsPDF('p', 'pt', 'A4');
     // Assuming the font files are in a 'fonts' folder in your project
@@ -97,14 +230,14 @@ function generateCertificatePDF(averageDistance, timeElapsed, jsonFile, limitPoi
 
     doc.text(`Certifikát o splnění`, 70, 40);
     doc.setFontSize(16);
-    doc.text(`Tímto souborem se stvrzuje, že hráč dohrál hru "Slepý zemák".`, 30, 80);
+    doc.text(`Tímto souborem se stvrzuje, že ` + userName + ` dohrál hru "Slepý zemák".`, 30, 80);
     doc.text(`Průměrná odchylka: ${Math.round(averageDistance)} kilometrů`, 30, 120);
     doc.text(`Celkový čas: ${(timeElapsed)/1000} sekund`, 30, 140);
     doc.text(`Vydáno dne: ${new Date().toLocaleDateString()}`, 30, 160);
 
     doc.text(`Herní json: ${jsonFile}`, 30, 200);
     doc.text(`Celkem pojmů: ${limitPoiIndex}`, 30, 220);
-    doc.text(`Hash: ${(Date.now()*(averageDistance+timeElapsed)).toString(16)}`, 30, 350);
+    doc.text(`Autentikační hash: ${(Date.now()*(Math.round(averageDistance)+Math.round(timeElapsed/1000))).toString(16)}`, 30, 350);
 
     return doc;
 }
@@ -120,7 +253,7 @@ function submitGuess() {
         var distance = calculateDistance(guessCoords, actualCoords);
         document.getElementById('result').innerHTML = 'a tvůj odhad byl asi <b>' + distance.toFixed(1) + '</b> kilometrů od cíle,';
         var currentPoi = document.getElementById('poi-name').innerHTML;
-        console.log(distance, currentPoi)
+        console.log(distance, currentPoi);
         if (distance.toFixed(1) > 25) {
             badGuesses.push(currentPoi)
         }
@@ -132,7 +265,7 @@ function submitGuess() {
         } else if ((limitPoiIndex == null) && ((poiList.length - currentPoiIndex) != 1))   {
             document.getElementById('left-over').innerHTML =  "a zbývá ti " + (poiList.length - currentPoiIndex - 1) + " pojmů."
         }
-        userGuess[currentPoiIndex] = distance.toFixed(1)
+        userGuess[currentPoiIndex] = distance.toFixed(1);
         if (lastMarker.length > maxPins) {
             map.removeLayer(lastMarker[currentPoiIndex-maxPins]);
         } 
@@ -157,23 +290,26 @@ function submitGuess() {
         result = averageFloats(userGuess);
         const endTime = Date.now(); 
         const elapsedTime = endTime - startTime;
-        // markSchool = getMarkSchool(result)
-        console.log(jsonFile, limitPoiIndex)
-        let message = `
-        <br><br>
-        Konec, průměrná odchylka <b>${result.toFixed(1)}</b> kilometrů od cíle.<br><br>
-        A celkem ti to trvalo ${(elapsedTime/1000)} sekund!<br><br>
-        <button onclick="downloadCertificatePDF(${result}, ${elapsedTime}, '${jsonFile}', ${limitPoiIndex})">Download Certificate (PDF)</button>
-    `;
+        var markSchool = getMarkSchool(result);
+        console.log(jsonFile, limitPoiIndex);
+        if (examinationModeControl === true) { 
+            message = `
+            <br><br>
+            Konec, průměrná odchylka <b>${result.toFixed(1)}</b> kilometrů od cíle.<br><br>
+            A celkem ti to trvalo ${(elapsedTime/1000)} sekund!<br><br>
+            <button onclick="downloadCertificatePDF(${result}, ${elapsedTime}, '${jsonFile}', ${limitPoiIndex})">Stáhnout certifikát (PDF)</button>
+        `;
+        }
     
-
-        // let message = "<br><br>Konec, průměrná odchylka <b>" + result.toFixed(1) + "</b> kilometrů od cíle, <br>za to by ti Pavlíček dal tak za " + markSchool + ".<br><br>A nejvíce ti nešly: "+badGuesses.join(', ');
+        if (examinationModeControl === false) {
+            message = "<br><br>Konec, průměrná odchylka <b>" + result.toFixed(1) + "</b> kilometrů od cíle, <br>za to by ti Pavlíček dal tak za " + markSchool + ".";
+        }
 
         if (badGuesses.length > 10) {
             message = "<br><br><b> Whoah, uč se radši!</b>" + message
         }
         if (currentPoiIndex == limitPoiIndex) {
-            message = "Nejvíce ti nešly" + message;
+            message = message + "<br><br>Nejvíce ti nešly: " + badGuesses.join(', ');
         }
         
         if (currentPoiIndex == limitPoiIndex || currentPoiIndex >= poiList.length) {
@@ -200,17 +336,19 @@ function setNewPoi() {
 
     var currentPoi = poiList[currentPoiIndex];
     actualCoords = currentPoi[1];
-    console.log(currentPoi)
+    console.log(currentPoi);
+    document.getElementById('previous-poi').innerHTML = previousPoiName;
+    console.log("Printing POI...");
     try {
     var mountainHeight = currentPoi[1][2].find(item => typeof item === 'number');
     if (mountainHeight) {
-        document.getElementById('poi-name').innerHTML = currentPoi[0] + " - " + mountainHeight + " m. n. m"
+        document.getElementById('poi-name').innerHTML = currentPoi[0] + " - " + mountainHeight + " m. n. m";
     } else {
-        document.getElementById('poi-name').innerHTML = currentPoi[0]
-    }
-    document.getElementById('previous-poi').innerHTML = previousPoiName;
+        document.getElementById('poi-name').innerHTML = currentPoi[0];
+    } 
+    
     } catch {
-        document.getElementById('poi-name').innerHTML = currentPoi[0]
+        document.getElementById('poi-name').innerHTML = currentPoi[0];
     }
 
     mountainHeight = currentPoi[3]
@@ -219,23 +357,20 @@ function setNewPoi() {
         if (Array.isArray(poiType)) {
             poiType = poiType[0]; // Pick the first value from the list
         }
+        const translations = {
+            "river": "řeku",
+            "řeka": "řeku",
+            "water": "rybník",
+            "dam": "přehradu",
+            "lake": "jezero",
+            "přehrada": "přehradu",
+            "pahorkatina": "pahorkatinu",
+            "hora": "horu",
+            "nížina": "nížinu",
+            "brána": "bránu"
+          };
 
-        if (poiType === "řeka") {
-            return "řeku";
-          } else if (poiType === "přehrada") {
-            return "přehradu";
-          } else if (poiType === "pahorkatina") {
-            return "pahorkatinu";
-          } else if (poiType === "hora") {
-            return "horu";
-          } else if (poiType === "nížina") {
-            return "nížinu";
-          } else if (poiType === "brána") {
-            return "bránu";
-
-          } else {
-            return poiType;
-          }
+        return translations[poiType] || poiType;
         }
     document.getElementById('poi-type').innerHTML = intepretPoi(currentPoi[1][2]); // Access 'type' from currentPoi[1]
   }
@@ -289,7 +424,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 window.addEventListener('DOMContentLoaded', function() {
-    if (window.innerWidth < 400) {
+    if (window.innerWidth < 300) {
         var warningElement = document.createElement('div');
         warningElement.textContent = 'Varování: Stránka je optimalizovaná pro větší obrazovky.';
         warningElement.style.backgroundColor = 'red';
@@ -299,3 +434,4 @@ window.addEventListener('DOMContentLoaded', function() {
         document.body.insertBefore(warningElement, document.body.firstChild);
     }
 });
+  
