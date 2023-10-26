@@ -77,6 +77,33 @@ function getOverlay() {
 
     // Add a line break for visual separation
     const lineBreak = document.createElement("br");
+    form.appendChild(lineBreak); 
+
+    const dropdown = document.createElement("select");
+    dropdown.name = "dropdownField";
+    dropdown.style.width = "100%";
+    dropdown.style.padding = "5px";
+    dropdown.style.marginTop = "5px";
+    dropdown.style.marginBottom = "5px";
+    form.appendChild(dropdown);
+
+    // Add options to the dropdown
+    const option1 = document.createElement("option");
+    option1.value = "povrch";
+    option1.textContent = "Povrch (povrch.json)";
+    dropdown.appendChild(option1);
+
+    const option2 = document.createElement("option");
+    option2.value = "option2";
+    option2.textContent = "Vodstvo (vodstvo.json)";
+    dropdown.appendChild(option2);
+
+    const option3 = document.createElement("option");
+    option3.value = "option3";
+    option3.textContent = "Světová města (povrch.json)";
+    dropdown.appendChild(option3);
+
+    // Add a line break for visual separation
     form.appendChild(lineBreak);
 
     // Add username input field (hidden by default)
