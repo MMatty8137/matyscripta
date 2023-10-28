@@ -5,9 +5,18 @@ const urlParams = new URLSearchParams(window.location.search);
 const queryStringParams = new URLSearchParams(window.location.search);
 const jsonFile = urlParams.get('json') || 'povrch.json';
 var limitPoiIndex = urlParams.get('max') || null;
+var userName = urlParams.get('name') || "hráč";
+var examinationModeControl = testURLBoolean(urlParams.get('exam'))
 const gameName = jsonFile.substring(0, jsonFile.length - 5);
-var examinationModeControl = false;
-var userName = "hráč"
+
+function testURLBoolean (variable) {
+    console.log("testing...")
+    if (variable === "true") {
+        return true
+    } else {
+        return false
+    }
+}
 
 function accuracyWarning () {
     if (jsonFile === "vodstvo.json" && examinationModeControl === true) {
@@ -53,6 +62,30 @@ function getOverlay() {
     heading.style.marginBottom = "10px";
     form.appendChild(heading);
 
+    const dropdown = document.createElement("select");
+    dropdown.name = "dropdownField";
+    dropdown.style.width = "100%";
+    dropdown.style.padding = "5px";
+    dropdown.style.marginTop = "5px";
+    dropdown.style.marginBottom = "5px";
+    form.appendChild(dropdown);
+
+    // Add options to the dropdown
+    const option1 = document.createElement("option");
+    option1.value = "povrch.json";
+    option1.textContent = "Povrch (povrch.json)";
+    dropdown.appendChild(option1);
+
+    const option2 = document.createElement("option");
+    option2.value = "vodstvo.json";
+    option2.textContent = "Vodstvo (vodstvo.json)";
+    dropdown.appendChild(option2);
+
+    const option3 = document.createElement("option");
+    option3.value = "world.json";
+    option3.textContent = "Světová města (world.json)";
+    dropdown.appendChild(option3);
+
     // Add your form fields here
     const inputField = document.createElement("input");
     inputField.type = "text";
@@ -79,30 +112,6 @@ function getOverlay() {
     const lineBreak = document.createElement("br");
     form.appendChild(lineBreak); 
 
-    const dropdown = document.createElement("select");
-    dropdown.name = "dropdownField";
-    dropdown.style.width = "100%";
-    dropdown.style.padding = "5px";
-    dropdown.style.marginTop = "5px";
-    dropdown.style.marginBottom = "5px";
-    form.appendChild(dropdown);
-
-    // Add options to the dropdown
-    const option1 = document.createElement("option");
-    option1.value = "povrch";
-    option1.textContent = "Povrch (povrch.json)";
-    dropdown.appendChild(option1);
-
-    const option2 = document.createElement("option");
-    option2.value = "option2";
-    option2.textContent = "Vodstvo (vodstvo.json)";
-    dropdown.appendChild(option2);
-
-    const option3 = document.createElement("option");
-    option3.value = "option3";
-    option3.textContent = "Světová města (povrch.json)";
-    dropdown.appendChild(option3);
-
     // Add a line break for visual separation
     form.appendChild(lineBreak);
 
@@ -115,12 +124,74 @@ function getOverlay() {
     usernameInput.style.display = "none"; // Initially hidden
     form.appendChild(usernameInput);
 
+    // Add support question mark
+    const supportIcon = document.createElement("div");
+    supportIcon.textContent = "Kde to jsem?";
+    supportIcon.style.position = "absolute";
+    supportIcon.style.top = "10px";
+    supportIcon.style.left = "10px";
+    supportIcon.style.cursor = "pointer";
+    supportIcon.style.fontWeight = "bold";
+    supportIcon.style.fontSize = "24px";
+    supportIcon.style.marginRight = "10px"
+    supportIcon.style.color = "#000000"; // Adjust the color to your preference
+    overlay.appendChild(supportIcon);
+
+    // Add instructions div (initially hidden)
+    const instructionsDiv = document.createElement("div");
+    instructionsDiv.innerHTML = `Pomocí <i>config=true</i> jsi otevřel konfigurační menu hry, pomůže ti hru připravit.<br>
+    <ul>
+        <li> • počet pojmů nastaví, kolik termínu na své slepé mapě chceš</li>
+        <li> • mód testu ti na konci vystaví certifikát a umožní přidat jméno</li>
+        <li> • také můžeš vybrat, jakou slepou mapu chceš hrát pomocí menu</li>
+    </ul>
+  `;
+    instructionsDiv.style.position = "absolute";
+    instructionsDiv.style.top = "42px";
+    instructionsDiv.style.left = "10px";
+    instructionsDiv.style.background = "#fff";
+    instructionsDiv.style.padding = "5px";
+    instructionsDiv.style.border = "1px solid #000";
+    instructionsDiv.style.borderRadius = "5px";
+    instructionsDiv.style.display = "none";
+    instructionsDiv.style.width = 90%
+    overlay.appendChild(instructionsDiv);
+
     // Conditionally show/hide username input field
     examinationCheckbox.addEventListener("change", function() {
         if (examinationCheckbox.checked) {
             usernameInput.style.display = "block";
         } else {
             usernameInput.style.display = "none";
+        }
+    });
+
+    // Add event listeners to show and hide instructions on mobile
+    supportIcon.addEventListener("mouseover", function() {
+        instructionsDiv.style.display = "block";
+    });
+    
+    supportIcon.addEventListener("mouseout", function() {
+        instructionsDiv.style.display = "none";
+    });
+
+    // Add event listeners to show and hide instructions on mobile
+    supportIcon.addEventListener("touchstart", function() {
+        instructionsDiv.style.display = "block";
+    });
+    
+    supportIcon.addEventListener("touchend", function() {
+        instructionsDiv.style.display = "none";
+    });
+
+    // Add event listeners to open and close the instructionsDiv.
+    supportIcon.addEventListener("click", function() {
+        instructionsDiv.style.display = "block";
+    });
+    
+    document.addEventListener("click", function(event) {
+        if (event.target !== supportIcon && event.target !== instructionsDiv) {
+        instructionsDiv.style.display = "none";
         }
     });
 
@@ -137,10 +208,20 @@ function getOverlay() {
         const formData = new FormData(form);
         const fieldValue = formData.get("fieldName");
         userName = formData.get("username");
-
         limitPoiIndex = parseInt(fieldValue);
         examinationModeControl = formData.get("examinationMode") === "on";
+        // Get the current URL
+        var currentURL = window.location.href;
 
+        // Find the position of the first question mark
+        const questionMarkIndex = currentURL.indexOf("?");
+
+        // Extract the portion before the question mark
+        currentURL = questionMarkIndex !== -1 ? currentURL.substring(0, questionMarkIndex) : currentURL;
+
+        const jsonFile = dropdown.value;
+
+        window.open(`${currentURL}?json=${jsonFile}&max=${limitPoiIndex}&user=${userName}&exam=${examinationModeControl}`,"_self")
         if (!examinationModeControl) {
             var bottomLeftElement = document.getElementById('buymeacoffee');
             bottomLeftElement.style.display = 'flex';
@@ -160,6 +241,16 @@ function getOverlay() {
 
 if (queryStringParams.get("config") === "true") {
     getOverlay();
+}
+
+if (examinationModeControl === false && queryStringParams.get("config") !== "true") {
+    var bottomLeftElement = document.getElementById('buymeacoffee');
+    bottomLeftElement.style.display = 'flex';
+} else {
+    var bottomLeftElement = document.getElementById('buymeacoffee');
+    bottomLeftElement.style.display = 'flex';
+    bottomLeftElement.innerHTML = "verze pro pana Pavlíčka"
+    bottomLeftElement.style.paddingBottom = "7px"
 }
 
 console.log(gameName);
