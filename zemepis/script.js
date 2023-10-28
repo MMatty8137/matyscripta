@@ -18,6 +18,10 @@ function testURLBoolean (variable) {
     }
 }
 
+if (limitPoiIndex === "NaN") {
+    var limitPoiIndex = 10
+}
+
 function accuracyWarning () {
     if (jsonFile === "vodstvo.json" && examinationModeControl === true) {
         var warningElement = document.createElement('div');
@@ -126,6 +130,7 @@ function getOverlay() {
 
     // Add support question mark
     const supportIcon = document.createElement("div");
+    supportIcon.className = "support-icon"
     supportIcon.textContent = "Kde to jsem?";
     supportIcon.style.position = "absolute";
     supportIcon.style.top = "10px";
@@ -541,8 +546,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+function hideAllElementsExcept(elementId) {
+    const elements = document.querySelectorAll("*");
+    for (const element of elements) {
+      if (element.id !== elementId) {
+        element.style.display = "none";
+      }
+    }
+  }
+
 window.addEventListener('DOMContentLoaded', function() {
-    if (window.innerWidth < 300) {
+    if (window.innerWidth < 320) {
         var warningElement = document.createElement('div');
         warningElement.textContent = 'Varování: Stránka je optimalizovaná pro větší obrazovky.';
         warningElement.style.backgroundColor = 'red';
@@ -550,6 +564,19 @@ window.addEventListener('DOMContentLoaded', function() {
         warningElement.style.padding = '10px';
         warningElement.style.textAlign = 'center';
         document.body.insertBefore(warningElement, document.body.firstChild);
+    }
+    if (window.innerWidth < 200) {
+        var moveElement = document.createElement('div');
+        moveElement.textContent = 'Přejdi na větší zařízení.';
+        moveElement.style.display = "flex!important"
+        moveElement.style.backgroundColor = 'red';
+        moveElement.style.color = 'white';
+        moveElement.style.padding = '10px';
+        moveElement.style.textAlign = 'center';
+        moveElement.style.display = 'block';
+        document.body.insertBefore(moveElement, document.body.firstChild);
+        moveElement.id = "myElement"
+        hideAllElementsExcept("myElement")
     }
 });
   
