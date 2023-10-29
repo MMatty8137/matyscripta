@@ -243,7 +243,7 @@ function getOverlay() {
 }
 
 
-
+accuracyWarning()
 if (queryStringParams.get("config") === "true") {
     getOverlay();
 }
