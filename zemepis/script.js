@@ -5,7 +5,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const queryStringParams = new URLSearchParams(window.location.search);
 const jsonFile = urlParams.get('json') || 'povrch.json';
 var limitPoiIndex = urlParams.get('max') || null;
-var userName = urlParams.get('name') || "hráč";
+var userName = urlParams.get('user') || "hráč";
 var examinationModeControl = testURLBoolean(urlParams.get('exam'))
 const gameName = jsonFile.substring(0, jsonFile.length - 5);
 
